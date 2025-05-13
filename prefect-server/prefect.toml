@@ -1,6 +1,9 @@
 server.api.auth_string="dev:TopSecretPassword"
 
-# Adding this causes:
+# Adding this
 # server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@localhost:5432/prefect"
-# A connection error to the db
+# Causes a connection error to the db
 # OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
+# ERROR:    Application startup failed. Exiting.
+#
+#Server stopped!
