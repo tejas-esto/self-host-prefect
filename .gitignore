@@ -1,0 +1,9 @@
+# Ignore local IDE files and macOS related files
+.idea
+.DS_Store
+
+# Ignore local venv
+.venv
+
+# Ignore the pycache
+__pycache__

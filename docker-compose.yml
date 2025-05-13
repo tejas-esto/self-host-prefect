@@ -1,0 +1,31 @@
+services:
+  prefect-postgres:
+    image: postgres:latest
+    container_name: prefect-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - prefectdb:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+
+  prefect-server:
+    build:
+      context: ./prefect-server
+      dockerfile: Dockerfile
+    container_name: prefect-server
+    restart: always
+    ports:
+      - "4200:4200"
+
+    depends_on:
+      - prefect-postgres
+
+volumes:
+  prefectdb:
