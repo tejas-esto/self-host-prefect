@@ -27,5 +27,14 @@ services:
     depends_on:
       - prefect-postgres
 
+  prefect-nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - prefect-server
+
 volumes:
   prefectdb:
