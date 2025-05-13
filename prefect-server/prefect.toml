@@ -1,9 +1,32 @@
 server.api.auth_string="dev:TopSecretPassword"
 
 # Adding this
-# server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@localhost:5432/prefect"
+#server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@localhost:5432/prefect"
 # Causes a connection error to the db
 # OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
 # ERROR:    Application startup failed. Exiting.
 #
 #Server stopped!
+
+# Adding this
+#server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@127.0.0.1:5432/prefect"
+# Causes a connection error again
+#ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 5432)
+
+# This works
+server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@prefect-postgres:5432/prefect"
+
+# But the API is unreachable for the UI
+#server.ui.api_url="http://127.0.0.1:4200/api"
+# Gives:
+# Can't connect to Server API at http://127.0.0.1:4200/api. Check that it's accessible from your machine.
+
+#server.ui.api_url="http://prefect-server:4200/api"
+# Can't connect to Server API at http://prefect-server:4200/api. Check that it's accessible from your machine.
+
+# This works
+server.ui.api_url="http://0.0.0.0:4200/api"
+
+# Docker networking FTW
+
+
