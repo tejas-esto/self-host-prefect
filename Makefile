@@ -7,5 +7,3 @@ up:
 down:
 	docker compose down
 
-rm:
-	docker compose rm
