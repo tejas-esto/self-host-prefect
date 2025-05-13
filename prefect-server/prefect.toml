@@ -29,4 +29,6 @@ server.ui.api_url="http://0.0.0.0:4200/api"
 
 # Docker networking FTW
 
-
+# The funny thing is that you can actually access the dashboard from
+# http://localhost:4200/dashboard
+# That one doesn't work, but http://0.0.0.0:4200/dashboard works as expected

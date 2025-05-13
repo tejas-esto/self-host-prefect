@@ -7,3 +7,4 @@ up:
 down:
 	docker compose down
 
+rebuild: down build up
