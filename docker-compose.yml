@@ -6,7 +6,7 @@ services:
     ports:
       - "5432:5432"
     env_file:
-      - .env
+      - ./postgres/.env
     volumes:
       - prefectdb:/var/lib/postgresql/data
     healthcheck:
@@ -22,19 +22,20 @@ services:
     container_name: prefect-server
     restart: always
     ports:
-      - "4200:4200"
-
+          - "4200:4200"
     depends_on:
       - prefect-postgres
 
-  prefect-nginx:
-    image: nginx:latest
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - prefect-server
+#  prefect-nginx:
+#    image: nginx:latest
+#    container_name: nginx
+#    restart: always
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+#    depends_on:
+#      - prefect-server
 
 volumes:
   prefectdb:
