@@ -12,7 +12,9 @@ server.api.port=4200
 # UI
 ## The connection url for communication from the UI to the API.
 ## This will stay the same, since we are telling the UI the API is on the same machine
-server.ui.api_url="http://0.0.0.0:4200/api"
+#server.ui.api_url="http://0.0.0.0:4200/api"
+## This is inferred from server.api.host and server.api.port
+## So it is not necessary to explicity define it
 
 ## Setting for clients that print or log UI URLs (for example, the Prefect CLI)
 ## This is setting is for the UI to log proper URLs
@@ -23,32 +25,3 @@ ui_url="0.0.0.0"
 # Set these if Prefect needs to construct URLs pointing to itself *through the proxy*:
 # PREFECT_UI_URL: http://localhost/ # Adjust localhost if using a domain
 # PREFECT_API_URL: http://localhost/api/ # Adjust localhost if using a domain
-
-# Things that don't work
-# Adding this
-#server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@localhost:5432/prefect"
-# Causes a connection error to the db
-# OSError: Multiple exceptions: [Errno 111] Connect call failed ('::1', 5432, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 5432)
-# ERROR:    Application startup failed. Exiting.
-#
-#Server stopped!
-
-# Adding this
-#server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@127.0.0.1:5432/prefect"
-# Causes a connection error again
-#ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 5432)
-
-# But the API is unreachable for the UI
-#server.ui.api_url="http://127.0.0.1:4200/api"
-# Gives:
-# Can't connect to Server API at http://127.0.0.1:4200/api. Check that it's accessible from your machine.
-
-#server.ui.api_url="http://prefect-server:4200/api"
-# Can't connect to Server API at http://prefect-server:4200/api. Check that it's accessible from your machine.
-
-
-# Docker networking FTW
-
-# The funny thing is that you can actually access the dashboard from
-# http://localhost:4200/dashboard
-# That one doesn't work, but http://0.0.0.0:4200/dashboard works as expected
