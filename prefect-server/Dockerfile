@@ -7,4 +7,4 @@ COPY . .
 # Install prefect
 RUN uv sync
 
-ENTRYPOINT ["uv", "run" ,"prefect", "server", "start", "--host",  "0.0.0.0"]
+ENTRYPOINT ["uv", "run" ,"prefect", "server", "start"]
