@@ -6,7 +6,7 @@ services:
     ports:
       - "5432:5432"
     env_file:
-      - ./postgres/.env
+      - .env
     volumes:
       - prefectdb:/var/lib/postgresql/data
     healthcheck:
