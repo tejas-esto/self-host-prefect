@@ -13,3 +13,6 @@ nuke:
 	# Very destructive use with caution
 	docker system prune -a
 	docker volume prune -a
+
+test-flow:
+	.venv/bin/python test-flow.py

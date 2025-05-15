@@ -12,6 +12,15 @@ server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassw
 server.api.host="prefect-server"
 server.api.port=4200
 
-# https://docs-3.prefect.io/v3/api-ref/settings-ref#api-url-2
-#
+# Reference: https://docs-3.prefect.io/v3/api-ref/settings-ref#api-url-2
 server.ui.api_url="prefect-server/api"
+
+# From: https://docs-3.prefect.io/v3/develop/settings-and-profiles#security-settings
+# Host the UI behind a reverse proxy
+# When using a reverse proxy (such as Nginx or Traefik) to proxy traffic to a hosted Prefect UI instance,
+# you must also configure the self-hosted Prefect server instance to connect to the API.
+# The ui.api_url setting should be set to the external proxy URL.
+# For example, if your external URL is https://prefect-server.example.com then you can configure a
+# prefect.toml file for your server like this:
+# [ui]
+# api_url = "https://prefect-server.example.com/api"
