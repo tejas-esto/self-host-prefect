@@ -3,8 +3,6 @@ services:
     image: postgres:latest
     container_name: prefect-postgres
     restart: always
-    ports:
-      - "5432:5432"
     env_file:
       - .env
     volumes:
@@ -21,8 +19,8 @@ services:
       dockerfile: Dockerfile
     container_name: prefect-server
     restart: always
-    ports:
-          - "4200:4200"
+#    ports:
+#          - "4200:4200"
     depends_on:
       - prefect-postgres
 
