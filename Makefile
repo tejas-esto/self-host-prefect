@@ -9,5 +9,7 @@ down:
 
 rebuild: down build up
 
-prune:
+nuke:
+	# Very destructive use with caution
 	docker system prune -a
+	docker volume prune -a
