@@ -12,6 +12,9 @@ services:
       interval: 60s
       timeout: 10s
       retries: 5
+    networks:
+      # Connects to the custom bridge network for inter-service communication.
+      - prefect-network
 
   prefect-server:
     build:
@@ -19,10 +22,11 @@ services:
       dockerfile: Dockerfile
     container_name: prefect-server
     restart: always
-#    ports:
-#          - "4200:4200"
     depends_on:
       - prefect-postgres
+    networks:
+      # Connects to the custom bridge network for inter-service communication.
+      - prefect-network
 
   prefect-nginx:
     image: nginx:latest
@@ -34,6 +38,13 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - prefect-server
-
+    networks:
+      # Connects to the custom bridge network for inter-service communication.
+      - prefect-network
 volumes:
   prefectdb:
+
+networks:
+  # Defines a custom bridge network, allowing services to communicate using their service names
+  # (e.g., http://prefect-server:4200 from Nginx).
+  prefect-network:
