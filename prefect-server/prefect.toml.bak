@@ -1,0 +1,32 @@
+# Auth
+server.api.auth_string="dev:TopSecretPassword2"
+
+# DB Connection
+server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@prefect-postgres:5432/prefect"
+
+# API
+## The API’s host address
+## https://docs-3.prefect.io/v3/api-ref/settings-ref#host-2
+#server.api.host="0.0.0.0"
+#server.api.port=4200
+#
+#https://docs-3.prefect.io/v3/api-ref/settings-ref#csrf-protection-enabled
+#server.api.csrf_protection_enabled=true
+
+# PREFECT_API_URL
+# https://docs-3.prefect.io/v3/api-ref/settings-ref#url
+# The URL of the Prefect API
+#api.url="http://0.0.0.0:4200/api"
+
+
+# PREFECT_UI_URL
+# https://docs-3.prefect.io/v3/api-ref/settings-ref#ui-url
+# Used by server and CLI for constructing UI URLs.
+#ui_url="http://0.0.0.0:4200/"
+
+
+# PREFECT_UI_API_URL, PREFECT_SERVER_UI_API_URL
+# https://docs-3.prefect.io/v3/api-ref/settings-ref#api-url-2
+# Required for reverse proxy setups. Tells the UI where to make API calls.
+# Claims that this defaults to api.url
+#server.ui.api_url="http://0.0.0.0:4200/api"

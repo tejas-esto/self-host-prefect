@@ -21,6 +21,8 @@ services:
       dockerfile: Dockerfile
     container_name: prefect-server
     restart: always
+#    ports:
+#          - "4200:4200"
     depends_on:
       - prefect-postgres
     networks:
