@@ -13,7 +13,6 @@ services:
       timeout: 10s
       retries: 5
     networks:
-      # Connects to the custom bridge network for inter-service communication.
       - prefect-network
 
   prefect-server:
@@ -25,7 +24,6 @@ services:
     depends_on:
       - prefect-postgres
     networks:
-      # Connects to the custom bridge network for inter-service communication.
       - prefect-network
 
   prefect-nginx:
@@ -39,12 +37,12 @@ services:
     depends_on:
       - prefect-server
     networks:
-      # Connects to the custom bridge network for inter-service communication.
       - prefect-network
+
 volumes:
   prefectdb:
 
 networks:
-  # Defines a custom bridge network, allowing services to communicate using their service names
+  # Define a custom bridge network, allowing services to communicate using their service names
   # (e.g., http://prefect-server:4200 from Nginx).
   prefect-network:
