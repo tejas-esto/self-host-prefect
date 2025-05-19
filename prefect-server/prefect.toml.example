@@ -1,5 +1,5 @@
 # Auth
-server.api.auth_string="dev:TopSecretPassword2"
+server.api.auth_string="dev:TopSecretPassword"
 
 # DB Connection
 server.database.connection_url="postgresql+asyncpg://postgres:yourTopSecretPassword@prefect-postgres:5432/prefect"
@@ -17,6 +17,16 @@ server.api.port=4200
 # This makes the UI want to connect to the same machine on which you are accessing the UI
 # The API is not running there.
 # It should point to the IP that is accessible from outside
+# When we close the port, it needs to go to the proxy which is listening on port 80.
+server.ui.api_url="http://ip.address.of.machine/api"
+# Once it has been hosted, we will need to point it to the correct domain name
+# When running on EC2, we will need to point to the IP that we get
+# Or the domain name with the proper DNS setup
 
-# Current IP: http://192.168.8.135:4200 (Internal IP)
-server.ui.api_url="http://192.168.8.135:4200/api"
+# https://docs.prefect.io/v3/api-ref/settings-ref#ui-url
+# This is needed for the UI to have proper URLs
+ui_url="http://ip.address.of.machine"
+# Or domain name
+
+# Setup the right .toml file in production
+# prefect.toml will be ignored by git since it contains secrets.

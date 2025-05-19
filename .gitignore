@@ -7,3 +7,6 @@
 
 # Ignore the pycache
 __pycache__
+
+prefect.toml
+.env
