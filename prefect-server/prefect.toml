@@ -22,4 +22,6 @@ server.ui.api_url="http://192.168.8.135/api"
 # Once it has been hosted, we will need to point it to the correct domain name
 # When running on EC2, we will need to point to the IP that we get
 
+# https://docs.prefect.io/v3/api-ref/settings-ref#ui-url
+# This is needed for the UI to have proper URLs
 ui_url="http://192.168.8.135"

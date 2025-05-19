@@ -2,7 +2,8 @@ build:
 	docker compose build
 
 up:
-	docker compose up
+	# Build and start the containers in the background
+	docker compose up -d
 
 down:
 	docker compose down
@@ -13,12 +14,6 @@ nuke:
 	# Very destructive use with caution
 	docker system prune -a
 	docker volume prune -a
-
-create-prefect-profile:
-	prefect profile create local-dockerised-prefect
-	-prefect profile use local-dockerised-prefect
-	prefect config set PREFECT_API_URL="http://localhost/api"
-	prefect config set PREFECT_API_AUTH_STRING="dev:TopSecretPassword2"
 
 test-flow:
 	.venv/bin/python test-flow.py
